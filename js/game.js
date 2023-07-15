@@ -16,6 +16,7 @@ constructor(){
     this.obstacles=[]
     this.score=0
     this.lives=3
+
     this.gameIsOver=false
 }
 
@@ -59,13 +60,15 @@ update(){
             this.score++
             i--
         }
+        document.getElementById("score").innerHTML=this.score
+        document.getElementById("lives").innerHTML=this.lives
+
         if(this.lives===0)
         this.endGame()
-
       }
 }
 endGame(){
-    this.obstacles.splice(i,this.obstacles.length);
+    this.obstacles.forEach(obstacle => obstacle.element.remove());
     this.gameIsOver=true
     this.gameScreen.style.display = "none"
     this.gameEndScreen.style.display="block"
